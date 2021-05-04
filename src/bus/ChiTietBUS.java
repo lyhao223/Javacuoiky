@@ -13,18 +13,27 @@ import Model.ChiTietDTO;
 import dao.ChiTietDAO;
 public class ChiTietBUS {
     public static ArrayList<ChiTietDTO> ct;
+    public static ArrayList<ChiTietDTO> getCT(){
+        return ct;
+    }
+     public static void setCT(ArrayList<ChiTietDTO> ct){
+        ChiTietBUS.ct=ct;
+    }
+
+   
     public ChiTietBUS(){
+        ct=null;
     }
     public ArrayList docchitiet() throws Exception{
         ChiTietDAO data=new ChiTietDAO();
         if(ct==null) ct=new ArrayList<ChiTietDTO>();
         ct=data.docchitiet();
         Vector header=new Vector();
-        header.add("MÃHD");
-        header.add("MÃSP");
+        header.add("MÃ HD");
+        header.add("MÃ SP");
         header.add("SL");
-        header.add("ĐƠNGIÁ");
-        header.add("THÀNHTIỀN");
+        header.add("ĐƠN GIÁ");
+        header.add("THÀNH TIỀN");
         return ct;
     }
 
@@ -32,5 +41,6 @@ public class ChiTietBUS {
         ChiTietDAO data=new ChiTietDAO();
         data.them(chitiet);
         ct.add(chitiet);
+
     }
 }

@@ -278,6 +278,11 @@ public class HoaDon extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Save.png"))); // NOI18N
         jButton3.setText("Thêm chi tiết");
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         p2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 110, 60));
 
         p1.add(p2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 670, 210));
@@ -533,6 +538,18 @@ public class HoaDon extends javax.swing.JFrame {
             Logger.getLogger(HoaDon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        CTHD ct = null;
+        try {
+            ct = new CTHD();
+        } catch (Exception ex) {
+            Logger.getLogger(HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     /**

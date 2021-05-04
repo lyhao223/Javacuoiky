@@ -8,16 +8,16 @@ package gui;
 import bus.ChiTietBUS;
 import Model.ChiTietDTO;
 import Model.HoaDonDTO;
-import Model.Sanpham;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import gui.HoaDon;
 import bus.HoaDonBUS;
-import bus.hanghoaBUS;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import bus.hanghoaBUS;
+import Model.Sanpham;
 
 /**
  *
@@ -26,13 +26,14 @@ import java.util.logging.Logger;
 public class CTHD extends javax.swing.JFrame {
     ArrayList<ChiTietDTO> ct=new ArrayList<>();
     ArrayList<HoaDonDTO> hd=new ArrayList<>();
-    ArrayList<Sanpham> sp = new ArrayList<>();
+    ArrayList<Sanpham> sp=new ArrayList<>();
     DefaultTableModel model=new DefaultTableModel();
     HoaDonBUS hdbus=new HoaDonBUS();
-    hanghoaBUS hhbus = new hanghoaBUS();
+    hanghoaBUS hhbus=new hanghoaBUS();
     Vector vector=new Vector();
     Vector vector1=new Vector();
     Vector vector2=new Vector();
+
     /**
      * Creates new form CTHD
      */
@@ -43,18 +44,15 @@ public class CTHD extends javax.swing.JFrame {
             vector.add(dto.getMaHD());
         }
         cb1.setModel(new DefaultComboBoxModel(vector));
-        
         sp=hhbus.doc();
-        for(Sanpham spp:sp){
-            vector1.add(spp.getMaSanpham());
-            for(Sanpham sppp:sp){
-            vector2.add(sppp.getDongiaSanpham());
-        }
-         
+        for(Sanpham dto1 :sp){
+            vector1.add(dto1.getMaSanpham());
         }
         cb2.setModel(new DefaultComboBoxModel(vector1));
+        for(Sanpham dto1 :sp){
+            vector2.add(dto1.getDongiaSanpham());
+        }
         cb3.setModel(new DefaultComboBoxModel(vector2));
-        
         
     }
 
@@ -68,167 +66,122 @@ public class CTHD extends javax.swing.JFrame {
     private void initComponents() {
 
         p1 = new javax.swing.JPanel();
-        lb1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lbMaHD = new javax.swing.JLabel();
         lbMaHD2 = new javax.swing.JLabel();
-        lbMaHD3 = new javax.swing.JLabel();
         lbMaHD4 = new javax.swing.JLabel();
         txMaSL = new javax.swing.JTextField();
-        txTT = new javax.swing.JTextField();
         cb1 = new javax.swing.JComboBox<>();
         btAdd = new javax.swing.JButton();
         cb2 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        lbMaHD5 = new javax.swing.JLabel();
         cb3 = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        lb1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        p1.setBackground(new java.awt.Color(58, 85, 134));
+        p1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lb1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        lb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb1.setText("CHI TIẾT HÓA ĐƠN");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(40, 66, 160));
-
-        lbMaHD.setBackground(new java.awt.Color(123, 168, 207));
-        lbMaHD.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        lbMaHD.setForeground(new java.awt.Color(255, 255, 255));
+        lbMaHD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbMaHD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMaHD.setText("SL");
+        lbMaHD.setText("Số lượng");
+        lbMaHD.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(lbMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 90, 91, 31));
 
-        lbMaHD2.setBackground(new java.awt.Color(123, 168, 207));
-        lbMaHD2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        lbMaHD2.setForeground(new java.awt.Color(255, 255, 255));
+        lbMaHD2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbMaHD2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMaHD2.setText("MaSP");
+        lbMaHD2.setText("Mã SP");
+        lbMaHD2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(lbMaHD2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 53, 91, 31));
 
-        lbMaHD3.setBackground(new java.awt.Color(123, 168, 207));
-        lbMaHD3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        lbMaHD3.setForeground(new java.awt.Color(255, 255, 255));
-        lbMaHD3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMaHD3.setText("Thành Tiền");
-
-        lbMaHD4.setBackground(new java.awt.Color(123, 168, 207));
-        lbMaHD4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        lbMaHD4.setForeground(new java.awt.Color(255, 255, 255));
+        lbMaHD4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbMaHD4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMaHD4.setText("Đơn Giá");
+        lbMaHD4.setText("Đơn giá");
+        lbMaHD4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(lbMaHD4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 127, 91, 31));
 
+        txMaSL.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txMaSL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txMaSLActionPerformed(evt);
             }
         });
-
-        txTT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txTTActionPerformed(evt);
-            }
-        });
+        jPanel1.add(txMaSL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 95, 100, -1));
 
         cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 16, 99, 31));
 
-        btAdd.setBackground(new java.awt.Color(58, 85, 134));
-        btAdd.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        btAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btAdd.setText("ADD");
-        btAdd.setBorder(new javax.swing.border.MatteBorder(null));
+        btAdd.setBackground(new java.awt.Color(255, 0, 153));
+        btAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Add.png"))); // NOI18N
+        btAdd.setText("Thêm");
+        btAdd.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAddActionPerformed(evt);
             }
         });
+        jPanel1.add(btAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 100, 47));
 
         cb2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(cb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 53, 99, 31));
 
-        jLabel1.setText("Mã HD");
+        lbMaHD5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbMaHD5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMaHD5.setText("Mã HD");
+        lbMaHD5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(lbMaHD5, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 16, 91, 31));
 
         cb3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(cb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 127, 99, 31));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbMaHD2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cb1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbMaHD4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cb3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txMaSL, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbMaHD3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txTT, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(341, 341, 341))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMaHD2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txMaSL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMaHD4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMaHD3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        p1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 310, 240));
 
-        javax.swing.GroupLayout p1Layout = new javax.swing.GroupLayout(p1);
-        p1.setLayout(p1Layout);
-        p1Layout.setHorizontalGroup(
-            p1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+
+        lb1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lb1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb1.setText("Chi tiết hoá đơn");
+        lb1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 153)));
+
+        jButton1.setBackground(new java.awt.Color(255, 0, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Back.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(59, 59, 59))
         );
-        p1Layout.setVerticalGroup(
-            p1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p1Layout.createSequentialGroup()
-                .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
+
+        p1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,20 +201,17 @@ public class CTHD extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txMaSLActionPerformed
 
-    private void txTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txTTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txTTActionPerformed
-
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         // TODO add your handling code here:
         float tt;
-        tt=Float.parseFloat(txDG.getText())*Integer.parseInt(txMaSL.getText());
+        tt=Float.parseFloat(cb3.getSelectedItem().toString())*Integer.parseInt(txMaSL.getText());
         ChiTietDTO chitiet=new ChiTietDTO();
         chitiet.setMaHD(cb1.getSelectedItem().toString());
-        chitiet.setMaSP(txMaSP.getText());
-        chitiet.setDonGia(Float.parseFloat(txDG.getText()));
+        chitiet.setMaSP(cb2.getSelectedItem().toString());
+        chitiet.setDonGia(Float.parseFloat(cb3.getSelectedItem().toString()));
         chitiet.setSL(Integer.parseInt(txMaSL.getText()));
         chitiet.setTT(tt);
+         
         ChiTietBUS bus=new ChiTietBUS();
         try {
             bus.them(chitiet);
@@ -269,6 +219,18 @@ public class CTHD extends javax.swing.JFrame {
             Logger.getLogger(CTHD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btAddActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        HoaDon ct = null;
+        try {
+            ct = new HoaDon();
+        } catch (Exception ex) {
+            Logger.getLogger(CTHD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,11 +259,17 @@ public class CTHD extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CTHD().setVisible(true);
+                try {
+                    new CTHD().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(CTHD.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -311,15 +279,15 @@ public class CTHD extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb1;
     private javax.swing.JComboBox<String> cb2;
     private javax.swing.JComboBox<String> cb3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lb1;
     private javax.swing.JLabel lbMaHD;
     private javax.swing.JLabel lbMaHD2;
-    private javax.swing.JLabel lbMaHD3;
     private javax.swing.JLabel lbMaHD4;
+    private javax.swing.JLabel lbMaHD5;
     private javax.swing.JPanel p1;
     private javax.swing.JTextField txMaSL;
-    private javax.swing.JTextField txTT;
     // End of variables declaration//GEN-END:variables
 }

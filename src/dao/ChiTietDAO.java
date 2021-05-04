@@ -61,13 +61,14 @@ public class ChiTietDAO {
     }
     public void them(ChiTietDTO ct) throws Exception {
         
-            String qry="INSERT INTO chitietHD VALUES (";
-            qry=qry+"'"+ct.getMaHD()+"'";
-            qry=qry+","+"'"+ct.getMaSP()+"'";
-            qry=qry+","+" "+ct.getSL()+" ";
-            qry=qry+","+" "+ct.getDonGia()+" ";
-            qry=qry+","+" "+ct.getTT()+" ";
-            qry=qry+")";
-             ResultSet rs=conn.excuteQuery(qry); 
-}
+            String qry="INSERT INTO chitiethd VALUES ('";
+           
+                qry += ct.getMaHD()+ "','";
+                qry += ct.getMaSP()+"','";
+                qry += ct.getSL()+ "','";
+                qry += ct.getDonGia()+ "','";
+                qry += ct.getTT()+ "')";
+        
+        conn.excuteUpdate(qry);
+    }
 }
